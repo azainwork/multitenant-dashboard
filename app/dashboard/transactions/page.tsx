@@ -1,11 +1,20 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 const statusColor: Record<string, string> = {
   COMPLETED: 'bg-emerald-50 text-emerald-700',
   PENDING: 'bg-amber-50 text-amber-700',
   FAILED: 'bg-red-50 text-red-700',
+}
+
+const statusLabel: Record<string, string> = {
+  COMPLETED: 'Selesai',
+  PENDING: 'Pending',
+  FAILED: 'Gagal',
 }
 
 function formatRupiah(n: number) {
